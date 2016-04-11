@@ -1,0 +1,55 @@
+<div data-ng-controller="UserController" class="creaditienl-boxes" data-ng-init="init()">
+    <form class="form-horizontal text-center" name="registerForm" ng-submit="register()" novalidate>
+        <div class="form-group">
+            <div class="input-group input-group-first">
+                <span class="input-group-addon">
+                    <span class="fa fa-user"></span>
+                </span>
+                <input  type="text" autocomplete="off" class="form-control input-lg" placeholder="First Name" name="Firstname" data-ng-model="user.first_name" data-ng-required="true">
+            </div>
+            <span class="text-red pull-right" data-ng-show="isRagisterUserFormSubmitted && registerForm.Firstname.$error.required">First name can't be blank</span>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fa fa-user"></span>
+                </span>
+                <input  type="text" autocomplete="off" class="form-control input-lg" placeholder="Last Name" name="Lastname" data-ng-model="user.last_name" data-ng-required="true">
+            </div>
+            <span class="text-red pull-right" data-ng-show="isRagisterUserFormSubmitted && registerForm.Lastname.$error.required">Last name can't be blank</span>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fa fa-envelope-o"></span>
+                </span>
+                <input type="email" autocomplete="off" class="form-control input-lg" placeholder="Email" name="email" data-ng-model="user.email" data-ng-required="true"  data-ic-unique="{field: 'email', model: 'User' , id:loggedUser._id}">
+            </div>
+            <span class="text-red pull-right" data-ng-show="isRagisterUserFormSubmitted && registerForm.email.$error.required">Email can't be blank</span>
+            <span class="text-red pull-right" data-ng-show="isRagisterUserFormSubmitted && registerForm.email.$error.email">Email is invalid</span>
+            <span class="text-red pull-right" data-ng-show="registerForm.email.$dirty && registerForm.email.$error.unique">Email address already in use</span>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fa fa-lock"></span>
+                </span>
+                <input type="password" autocomplete="off" class="form-control input-lg" placeholder="Password" name="userPassword" ng-model="user.password" data-ng-required="true">
+            </div>
+            <span class="text-red pull-right" data-ng-show="isRagisterUserFormSubmitted && registerForm.userPassword.$error.required">Password can't be blank</span>
+            <span class="text-red pull-right" data-ng-show="passwordWrong">{{passwordWrong}}</span>
+        </div>
+        
+        <div class="divider divider-lg"></div>
+        <div class="form-group">
+            <p class="additional-info text-small">By clicking on sign up, you agree to <a href="javascript:;">terms & conditions</a> and <a href="javascript:;">privacy policy</a></p>
+            <div class="divider"></div>
+            <button  type="submit" class="btn btn-primary btn-block btn-lg" data-ng-disabled="isRagisterBtnDisabled" data-ng-model="isRagisterBtnDisabled">Sign up</button>
+        </div>
+    </form>
+    
+    <div class="divider"></div>
+    <section class="additional-info">
+        <p class="text-right"><a href="#!login" >Log in now</a></p>
+    </section>
+</div>

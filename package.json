@@ -1,0 +1,75 @@
+{
+  "name": "expressjs-startup",
+  "version": "1.0.0",
+  "description": "boilerplate code for ExpressJS, AngularJS 1.x",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jayeshbhalodia/expressjs-startup"
+  },
+  "keywords": [
+    "ExpressJS",
+    "AngularJS"
+  ],
+  "author": "jayeshbhalodia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jayeshbhalodia/expressjs-startup/issues"
+  },
+  "homepage": "https://github.com/jayeshbhalodia/expressjs-startup",
+  "dependencies": {
+    "angular-animate": "^1.5.0",
+    "angular-toastr": "^1.7.0",
+    "assetmanager": "^1.2.2",
+    "async": "^1.5.2",
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "config": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.1.0",
+    "connect-multiparty": "^2.0.0",
+    "cookie-parser": "^1.4.1",
+    "cors": "^2.7.1",
+    "dependable": "^0.2.5",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "express-fileupload": "0.0.4",
+    "express-session": "^1.13.0",
+    "express-validator": "^2.20.2",
+    "forever": "^0.15.1",
+    "fs": "0.0.2",
+    "gridfs-stream": "^1.1.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-concurrent": "^2.2.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "hbs": "^4.0.0",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.7",
+    "morgan": "^1.7.0",
+    "multiparty": "^4.1.2",
+    "nodemailer": "^2.3.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-linkedin": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "uid": "0.0.2",
+    "uuid": "^2.0.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "gulp-nodemon": "^2.0.6"
+  }
+}

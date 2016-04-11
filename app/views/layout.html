@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <title>dbsMfg</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <meta name="google" content="notranslate">
+        <meta name="fragment" content="!" />
+        <base href="/">
+
+        <meta name="keywords" content="node.js, express, mongoose, mongodb, angularjs, swig">
+        <meta name="description" content="MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).">
+
+        <meta property="fb:app_id" content="APP_ID">
+        <meta property="og:title" content="provacca - {{pageId}} - provacca - {{pageId}}">
+        <meta property="og:description" content="MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="APP_URL">
+        <meta property="og:image" content="APP_LOGO">
+        <meta property="og:site_name" content="MEAN - A Modern Stack">
+        <meta property="fb:admins" content="APP_ADMIN">
+
+
+
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Hey man, I'm title!</title>
+        
+        <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300,700" rel="stylesheet" type="text/css">
+        <link href="/fonts/themify-icons/themify-icons.min.css" rel="stylesheet">
+        <link href="/fonts/weather-icons/css/weather-icons.min.css" rel="stylesheet">
+        <link href="/libs/angular-toastr/dist/angular-toastr.css" rel="stylesheet">
+        <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+        <!-- devloper css -->
+        <link href="/css/sass/global.css" rel="stylesheet">
+
+
+
+        <script type="text/javascript">
+            var ENV = '{{ENV}}';
+        </script>
+
+
+
+
+
+        <script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="/libs/angular/angular.min.js"></script>
+        
+        <script type="text/javascript" src="/libs/angular-toastr/dist/angular-toastr.tpls.js"></script>
+        <script type="text/javascript" src="/libs/angular-sanitize/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/libs/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="/libs/angular-mocks/angular-mocks.js"></script>
+        <script type="text/javascript" src="/libs/angular-cookies/angular-cookies.js"></script>
+        <script type="text/javascript" src="/libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script type="text/javascript" src="/libs/angular-animate/angular-animate.min.js"></script>
+        
+        <script type="text/javascript" src="/angular/routes/icMean.js"></script>
+        
+        <script type="text/javascript" src="/angular/controllers/user.js"></script>
+
+        <script type="text/javascript" src="/angular/services/icMean.js"></script>
+
+    </head>
+
+    <body id="app" class="app ic-dbsMfg-body">
+
+        <!-- Header -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">dbsMfg</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav pull-right" data-ng-show="!loggedUser._id">
+                    <li ng-class="getClass('/login')"><a href="#!login">Login</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav pull-right" data-ng-show="loggedUser._id">
+                    <li ng-class="getClass('/dashboard')"><a href="#">Dashboard</a></li>
+                    <li ng-class="getClass('/logout')" data-ng-controller="UserController"><a data-ng-click="userLogout()" href="">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        
+        <div id="content" class="view-content">
+            <section>
+                <div ui-view></div>
+            </section>
+        </div>
+        
+        <!-- <div class="main-loading-flash loading-spinner" style="position:absolute;top:5%">
+            <img src="/svg-loaders/rings.svg" />
+        </div> -->
+        <!-- Footer -->
+        <!-- <footer class="footer">
+            <div>
+                <p class="text-muted">Place sticky footer content here.</p>
+            </div>
+        </footer> -->
+
+    </body>
+</html>

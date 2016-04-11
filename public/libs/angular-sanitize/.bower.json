@@ -1,0 +1,20 @@
+{
+  "name": "angular-sanitize",
+  "version": "1.5.1-build.4664+sha.a4e60cb",
+  "license": "MIT",
+  "main": "./angular-sanitize.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.5.1-build.4664+sha.a4e60cb"
+  },
+  "homepage": "https://github.com/angular/bower-angular-sanitize",
+  "_release": "1.5.1-build.4664+sha.a4e60cb",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.1-build.4664+sha.a4e60cb",
+    "commit": "48823eefb886125538141d7459316737f73d84e1"
+  },
+  "_source": "git://github.com/angular/bower-angular-sanitize.git",
+  "_target": "1.5.1-build.4664+sha.a4e60cb",
+  "_originalSource": "angular-sanitize"
+}

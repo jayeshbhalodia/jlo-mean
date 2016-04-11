@@ -1,0 +1,61 @@
+<section data-ng-controller="UserController" class="creaditienl-boxes" data-ng-init="getUserProfile()">
+
+<h3>Your Profile</h3>
+<div class="row ic-container-wrapper">
+   	<div class="col-lg-10">
+		<div ng-form="editUserProfileForm">
+			<div class="tab-content panel panel-default" >
+				<div role="tabpanel" class="tab-pane active  page page-dashboard" id="info">
+					<div class="form-group">
+						<label>Logo</label>
+						<!-- If not image -->
+						<div data-ng-if="!editUserProfileInfo.uploadingAvatar && !editUserProfileInfo.image" class="upload-big-pics-dz-blank" data-ng-click="uploadAvatar(1, editUserProfileInfo, true)" ></div>
+						
+						<!-- If there is image -->
+						<div data-ng-if="!editUserProfileInfo.uploadingAvatar && editUserProfileInfo.image" class="upload-big-pics-dz" data-ng-click="uploadAvatar(1, editUserProfileInfo, true)">
+							<img data-ng-src="/assets/uploads/users/{{editUserProfileInfo.image}}" class="img-thumbnail">
+							<div class="upload-big-pics-hover-txt">
+								<i class="ti-pencil pull-right pointer"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+	                  <div class="col-md-6">
+	                     <div class="form-group">
+	                        <label class="control-label">First Name</label>
+	                        <input type="text"  class="form-control" name ="profileFirstName" data-ng-model="editUserProfileInfo.first_name" data-ng-required="true">
+				    		<span class="text-error" data-ng-show="isEditUserFormSubmitted && editUserProfileForm.profileFirstName.$error.required">First name can't be blank</span>
+	                     </div>
+	                  </div>
+	                  <div class="col-md-6">
+	                     <div class="form-group">
+	                        <label class="control-label">Last Name</label>
+	                        <input type="text"  class="form-control" name ="profileLastName" data-ng-model="editUserProfileInfo.last_name" data-ng-required="true">
+				   			<span class="text-error" data-ng-show="isEditUserFormSubmitted && editUserProfileForm.profileLastName.$error.required">Last name can't be blank</span>
+	                     </div>
+	                  </div>
+	               	</div>
+	               	<div class="row">
+	                  <div class="col-md-12">
+					  	<div class="form-group">
+					    	<label>Email</label>
+						    <input type="email"  class="form-control" name ="profileEmail" data-ng-model="editUserProfileInfo.email" data-ng-required="true" data-ic-unique="{field: 'email', model: 'User' , id:loggedUser._id}">
+						    <span class="text-error" data-ng-show="isEditUserFormSubmitted && editUserProfileForm.profileEmail.$error.required">Email can't be blank</span>
+						    <span class="text-error" data-ng-show="isEditUserFormSubmitted && editUserProfileForm.profileEmail.$error.email">Email is invalid</span>
+						    <span class="text-error" data-ng-show="editUserProfileForm.email.$dirty && editUserProfileForm.profileEmail.$error.unique">This email address is already in use. Please select another one.</span>
+					  	</div>
+					  </div>
+					</div>
+					<div class="row">
+	                  <div class="col-md-12">
+					  	<div class="form-group">
+					  		<button type="submit" class="btn btn-primary cf-submit-btn agencies-btn-disabled pull-right" data-ng-model="isEditUserButtonDisabled" data-ng-disabled="isEditUserButtonDisabled" data-ng-click="editUserInformation(editUserProfileForm, editUserProfileInfo, loggedUser._id)" disabled="false">SAVE</button>
+					  	</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

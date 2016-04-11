@@ -1,0 +1,39 @@
+{
+  "name": "dbsmfg-startup",
+  "description": "boilerplate code for ExpressJS, AngularJS 1.x",
+  "main": "index.js",
+  "authors": [
+    "jayeshbhalodia"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ExpressJS",
+    "AngularJS"
+  ],
+  "homepage": "https://github.com/jayeshbhalodia/dbsmfg-startup",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "angular": "1.5.0",
+    "angular-resource": "1.5.0",
+    "angular-cookies": "1.5.0",
+    "angular-mocks": "1.5.0",
+    "angular-route": "1.5.0",
+    "bootstrap": "3.3.6",
+    "angular-bootstrap": "1.2.4",
+    "angular-toastr": "1.7.0",
+    "angular-animate": "1.5.1-build.4664+sha.a4e60cb",
+    "angular-sanitize": "1.5.1-build.4664+sha.a4e60cb",
+    "angular-ui-router": "^0.2.18",
+    "font-awesome": "^4.5.0"
+  }
+}
