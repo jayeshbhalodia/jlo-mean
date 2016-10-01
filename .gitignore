@@ -1,0 +1,10 @@
+.DS_Store
+.nodemonignore
+.sass-cache/
+npm-debug.log
+node_modules/
+app/tests/coverage/
+.bower-*/
+.idea/
+public/assets/uploads
+public/caches
