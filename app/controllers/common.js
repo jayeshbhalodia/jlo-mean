@@ -19,11 +19,13 @@ var filePath = {
  */
 
 function sendMail(mailOptions) {
+	
+	//
 	var transporter = nodemailer.createTransport({
 	    service: 'gmail',
 	    auth: {
-	        user: 'ajudiyatejas@gmail.com',
-	        pass: 't9712210715'
+	        user: 'emailGoesHere',
+	        pass: 'password here!'
 	    }
 	});
 
@@ -47,65 +49,7 @@ exports.getSingle = function(req, res) {
 
 	commonModel.findById(req.body._id, function(err, result) {
 		switch(req.body.model) {
-			case 'Tours':
-				var beaconsModel = mongoose.model('beacons');
-				var tourLoop = 0;
-				if (result) {
-
-					var resMiddle =  function(results) {
-						var userIds = [];
-						if (results.associates) {
-							for (var row in results.associates) {
-								userIds.push(results.associates[row].user_id);
-							}
-						}
-
-						User.find({
-							_id: { $in: userIds }
-						}).exec(function(err, userD) {
-
-							if (userD) {
-								for (var uRow in userD) {
-									for (var row in results.associates) {
-										if (results.associates[row].user_id == userD[uRow]._id) {
-											results.associates[row].assoFirstName = userD[uRow].first_name;
-											results.associates[row].assoLastName = userD[uRow].last_name;
-											results.associates[row].email = userD[uRow].email;
-										}
-									}
-								}
-							}
-
-							res.json(results);
-						});
-					}
-
-					if(result.pointsofInterests && result.pointsofInterests.length) {
-
-						var fetcbBeacon = function() {
-
-							if(tourLoop == result.pointsofInterests.length) {
-								resMiddle(result);
-								return;
-							}
-
-							beaconsModel.findOne({'_id' : result.pointsofInterests[tourLoop].beaconsIds}, function(err, beaconsResult) {
-
-								result.pointsofInterests[tourLoop].beaconData = beaconsResult;
-								tourLoop += 1;
-								fetcbBeacon();
-							});
-						}
-
-						// --
-
-						fetcbBeacon();
-
-					} else {
-						
-						resMiddle(result);
-					}
-				}
+			case 'something!':
 				break;
 			default:
 				res.json(result);
@@ -196,29 +140,6 @@ exports.postUpdateChildData = function(req, res) {
 	}
 
 	var commonModel = mongoose.model(req.body.model);
-
-	// Add Specific Trigger & Filter mongoose Id
-	if(req.body.model == 'Tours') {
-		if(req.body.trigger) {
-			for(var editpoiTrigerKey in req.body.trigger) {
-				if(!req.body.trigger[editpoiTrigerKey]._id) {
-					req.body.trigger[editpoiTrigerKey]._id = mongoose.Types.ObjectId(uid(12));
-				}
-
-				for(var editpoiFilterKey in req.body.trigger[editpoiTrigerKey].filter) {
-					if(!req.body.trigger[editpoiTrigerKey].filter[editpoiFilterKey]._id) {
-						req.body.trigger[editpoiTrigerKey].filter[editpoiFilterKey]._id = mongoose.Types.ObjectId(uid(12));
-					}
-				}
-			}
-		}
-	}
-
-	if (req.body.entityKey == 'tourCategory') {
-		req.body.userId = req.user._id;
-		delete req.body.model;
-	}
-
 	var entityId = req.body.entityId,
 		childEntityId = req.body.childEntityId,
 		entityKey = req.body.entityKey;
@@ -289,21 +210,7 @@ exports.postUpdateChildData = function(req, res) {
 				}
 
 				switch(entityKey) {
-					case 'pointsofInterests':
-
-						if(updateData.beaconsIds) {
-							var beaconsDataModel = mongoose.model('beacons');
-							beaconsDataModel.findOne({'_id' : updateData.beaconsIds}).exec(function(err, singleBeaconsData) {
-								updateData.beaconData = singleBeaconsData;
-								sendRS();
-								return;
-							});
-						} else {
-							updateData.beaconData = '';
-							sendRS();
-							return;
-						}
-
+					case 'something':
 					break;
 						default:
 						sendRS();
@@ -313,30 +220,7 @@ exports.postUpdateChildData = function(req, res) {
 			});
 		});
 
-		// commonModel.update(condition, {
-		// 		$set: updateData
-		// 	}, {
-		// 		upsert: true
-		// 	},
-		// 	function(err, status) {
-
-		// 		console.log('err > ', err);
-		// 		console.log('status > ', status);
-
-		// 		if(!err) {
-		// 			res.send({
-		// 				status: false,
-		// 				err: err,
-		// 				result: status
-		// 			});
-		// 			return;
-		// 		}
-
-		// 		res.send({
-		// 			status: true,
-		// 			result: status
-		// 		});
-		// 	});
+	
 	}
 
 	// --
@@ -668,77 +552,25 @@ exports.getDeleteData = function(req, res) {
 		return;
 	}
 
+	//
 	var commonModel = mongoose.model(req.body.model);
 
-	if (req.body.entityKey && req.body.entityKey == 'deletePointsofInterests') {
 
-		commonModel.update({
-			'_id': req.body._id
-		}, {
-			$pull:{
-				pointsofInterests: {
-						'_id': mongoose.Types.ObjectId(req.body.pointOfInsId)
-				}
-			}
-
-		}).exec(function(err, result) {
-			if (err) {
-				res.json({
-					status: false
-				});
-				return;
-			}
-
+	// Delete common Data
+	commonModel.findOne({ _id: req.body._id, userId: req.user._id}).remove(function(err, result) {
+		if (err) {
 			res.json({
-				status: true,
-				responseIds: req.body._id
+				status: false
 			});
 			return;
+		}
+
+		res.json({
+			status: true,
+			responseIds: req.body._id
 		});
-
-	} else if (req.body.entityKey && req.body.entityKey == 'deleteAssociate') {
-
-		commonModel.update({
-			'_id': req.body._id
-		}, {
-			$pull: {
-				associates: {
-					'_id': mongoose.Types.ObjectId(req.body.associateId)
-				}
-			}
-		}).exec(function(err, result) {
-			if (err) {
-				res.json({
-					status: false
-				});
-				return;
-			}
-
-			res.json({
-				status: true,
-				responseIds: req.body._id
-			});
-			return;
-		});
-
-	} else {
-
-		// Delete common Data
-		commonModel.findOne({ _id: req.body._id, userId: req.user._id}).remove(function(err, result) {
-			if (err) {
-				res.json({
-					status: false
-				});
-				return;
-			}
-
-			res.json({
-				status: true,
-				responseIds: req.body._id
-			});
-			return;
-		});
-	}
+		return;
+	});
 };
 
 
