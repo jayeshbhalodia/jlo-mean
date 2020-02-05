@@ -9,3 +9,5 @@ app/tests/coverage/
 public/assets/uploads
 public/caches
 bower_components
+package-lock.json
+pnpm-lock.yaml
