@@ -51,7 +51,7 @@
     "gulp-sass": "^2.3.2",
     "hbs": "^4.1.0",
     "method-override": "^2.3.10",
-    "mongoose": "^4.13.20",
+    "mongoose": "^5.8.11",
     "morgan": "^1.9.1",
     "multiparty": "^4.2.1",
     "nodemailer": "^2.7.2",
