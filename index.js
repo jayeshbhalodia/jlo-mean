@@ -19,7 +19,7 @@ var path = require('path'),
 
 var app = module.exports = express();
 
-if(!process.env.NODE_ENV) {
+if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = 'development';
 }
 
@@ -27,7 +27,11 @@ var env = process.env.NODE_ENV || 'development';
 
 
 // connect mongDB
-mongoose.connect(config.get('mongoDBURI'));
+mongoose.connect(config.get('mongoDBURI'), {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 require('./config/passport')(passport);
 
@@ -59,7 +63,7 @@ app.use(session({
 }))
 app.use(flash());
 app.use(function(req, res, next) {
-    if(req.session && req.session.user) {
+    if (req.session && req.session.user) {
         req.user = req.session.user;
         req.session.user = req.user;
     }
