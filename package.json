@@ -34,7 +34,7 @@
     "dependable": "^0.2.5",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "express-fileupload": "0.0.4",
+    "express-fileupload": "1.1.9",
     "express-session": "^1.17.0",
     "express-validator": "^2.21.0",
     "forever": "^0.15.3",
